@@ -99,6 +99,11 @@ function onDeviceSelected(selected)
 	}
 }
 window.onload = setup;
+
+// ZPL tests
+const zpl_label = '^XA^FO200,200^A0N36,36^FDTest Label^FS^XZ';
+const moviik_letters = '^XA^FO200,200^A0N36,36^FDMoviik^FS^XZ';
+const product_label = '^XA^CF0,30^FO300,30^FDHU  Label^FS^CF0,25^FO20,100^FDHU ID:         112345678000001107^FS^BY2.2,3,70^FO20,130^BCN,,N^FD112345678000001107^FS^FO20,230^FD60-Volt Cordless Electric Hedge Trimmer^FS^FO20,260^FD13^FS^FO650,200^BQN,2,5^FDQA,^FS^XZ'
 </script>
 </head>
 <body>
@@ -108,15 +113,26 @@ window.onload = setup;
 Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
 <input type="button" value="Get Application Configuration" onclick="getConfig()"><br/><br/>
 <input type="button" value="Send Config Label" onclick="writeToSelectedPrinter('~wc')"><br/><br/>
-<input type="button" value="Send ZPL Label" onclick="writeToSelectedPrinter('^XA^FO200,200^A0N36,36^FDTest Label^FS^XZ')"><br/><br/>
-<input type="button" value="ZPL Test" onclick="writeToSelectedPrinter('^XA^FO200,200^A0N36,36^FDMoviik^FS^XZ')"><br/><br/>
+
+<!-- ZPL Tests -->
+<input type="button" value="Print ZPL Label" onclick="writeToSelectedPrinter(zpl_label)"><br/><br/>
+<input type="button" value="Print Moviik Letters" onclick="writeToSelectedPrinter(moviik_letters)"><br/><br/>
+<input type="button" value="Print Product Label" onclick="writeToSelectedPrinter(product_label)"><br/><br/>
+
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
 <input type="text" name="write_text" id="write_text"><input type="button" value="Write" onclick="writeToSelectedPrinter(document.getElementById('write_text').value)"><br/><br/>
+
 <input type="button" value="Read" onclick="readFromSelectedPrinter()"><br/><br/>
+
+<!-- Images -->
 <input type="button" value="Send BMP" onclick="sendImage('Zebra_logobox.bmp');"><br/><br/>
 <input type="button" value="Send JPG" onclick="sendImage('ZebraGray.jpg');"><br/><br/>
 <input type="button" value="Send JPG Zalves Tattoo" onclick="sendImage('zalves_tattoo.jpg');"><br/><br/>
+<input type="button" value="Send Moviik Logo" onclick="sendImage('moviik_logo.svg');"><br/><br/>
+
+
+<!-- Files -->
 <input type="button" value="Send File" onclick="sendFile('wc.zpl');"><br/><br/>
 </body>
 </html>
