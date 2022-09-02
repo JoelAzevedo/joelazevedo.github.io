@@ -2,6 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <head>
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
+<script type="text/javascript" src="https://raw.githubusercontent.com/DanieLeeuwner/JSZPL/development/dist/jszpl.bundle.js"></script>
 <script type="text/javascript">
 var selected_device;
 var devices = [];
@@ -108,6 +109,23 @@ const slot_ticket = "^XA" +
 										"^ADN,100,10" +
 										"^FDSLOT 00A" +
 										"^XZ"
+
+// JSZPL
+const label = new Label();
+label.printDensity = new PrintDensity(PrintDensityName['8dpmm']);
+label.width = 100;
+label.height = 50;
+label.padding = new Spacing(10);
+
+const text = new Text();
+label.content.push(text);
+text.fontFamily = new FontFamily(FontFamilyName.D);
+text.text = 'Hello World!';
+
+const zpl = label.generateZPL();										
+
+
+
 </script>
 </head>
 <body>
