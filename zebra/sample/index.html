@@ -104,6 +104,10 @@ window.onload = setup;
 const zpl_label = '^XA^FO200,200^A0N36,36^FDTest Label^FS^XZ';
 const moviik_letters = '^XA^FO200,200^A0N36,36^FDMoviik^FS^XZ';
 const product_label = '^XA^CF0,30^FO300,30^FDHU  Label^FS^CF0,25^FO20,100^FDHU ID:         112345678000001107^FS^BY2.2,3,70^FO20,130^BCN,,N^FD112345678000001107^FS^FO20,230^FD60-Volt Cordless Electric Hedge Trimmer^FS^FO20,260^FD13^FS^FO650,200^BQN,2,5^FDQA,^FS^XZ'
+const slot_ticket = "^XA" +
+										"^ADN,100,10" +
+										"^FDSLOT 00A" +
+										"^XZ"
 </script>
 </head>
 <body>
@@ -118,6 +122,8 @@ Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);><
 <input type="button" value="Print ZPL Label" onclick="writeToSelectedPrinter(zpl_label)"><br/><br/>
 <input type="button" value="Print Moviik Letters" onclick="writeToSelectedPrinter(moviik_letters)"><br/><br/>
 <input type="button" value="Print Product Label" onclick="writeToSelectedPrinter(product_label)"><br/><br/>
+<input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
+
 
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
