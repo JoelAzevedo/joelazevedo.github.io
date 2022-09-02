@@ -124,8 +124,6 @@ text.text = 'Hello World!';
 
 const zpl = label.generateZPL();										
 
-
-
 </script>
 </head>
 <body>
@@ -141,7 +139,7 @@ Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);><
 <input type="button" value="Print Moviik Letters" onclick="writeToSelectedPrinter(moviik_letters)"><br/><br/>
 <input type="button" value="Print Product Label" onclick="writeToSelectedPrinter(product_label)"><br/><br/>
 <input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
-
+<input type="button" value="Print JSZPL Test" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
 
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
