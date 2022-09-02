@@ -2,7 +2,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <head>
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
-<script type="text/javascript" src="https://raw.githubusercontent.com/DanieLeeuwner/JSZPL/development/dist/jszpl.bundle.js"></script>
+<script type="text/javascript" src="../jszpl.bundle.js"></script>
+
 <script type="text/javascript">
 var selected_device;
 var devices = [];
@@ -122,7 +123,7 @@ label.content.push(text);
 text.fontFamily = new FontFamily(FontFamilyName.D);
 text.text = 'Hello World!';
 
-const zpl = label.generateZPL();										
+const zplLabelTest = label.generateZPL();										
 
 </script>
 </head>
@@ -139,7 +140,7 @@ Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);><
 <input type="button" value="Print Moviik Letters" onclick="writeToSelectedPrinter(moviik_letters)"><br/><br/>
 <input type="button" value="Print Product Label" onclick="writeToSelectedPrinter(product_label)"><br/><br/>
 <input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
-<input type="button" value="Print JSZPL Test" onclick="writeToSelectedPrinter(zpl)"><br/><br/>
+<input type="button" value="Print JSZPL Test" onclick="writeToSelectedPrinter(zplLabelTest)"><br/><br/>
 
 <input type="button" value="Get Status" onclick="writeToSelectedPrinter('~hs'); readFromSelectedPrinter()"><br/><br/>
 <input type="button" value="Get Local Devices" onclick="BrowserPrint.getLocalDevices(getDeviceCallback, errorCallback);"><br/><br/>
