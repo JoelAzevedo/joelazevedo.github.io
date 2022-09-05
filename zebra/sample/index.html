@@ -117,15 +117,15 @@ const slot_ticket = "^XA" +	// Initialize
 // JSZPL
 const label = new Label();
 label.printDensity = new PrintDensity(PrintDensityName['8dpmm']);
-label.width = 90; // 90mm
-label.height = 56; // 56mm
+label.height = 90; // 90mm
+label.width = 50; // 56mm
 label.padding = new Spacing(10);
 
 // Flight Number
 const flightNumber = new Text();
 label.content.push(flightNumber);
 flightNumber.height = 60;
-flightNumber.fontFamily = new FontFamily(FontFamilyName.E);
+flightNumber.fontFamily = new FontFamily(FontFamilyName.D);
 flightNumber.horizontalAlignment  = new Alignment(AlignmentValue.Center);
 flightNumber.text = 'Flight FR 8343';
 
@@ -135,7 +135,6 @@ const zplLabelTest = label.generateZPL();
 </head>
 <body>
 
-<span style="padding-right:50px; font-size:200%">Zebra Browser Print Test Page</span><br/>
 Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
 <input type="button" value="Get Application Configuration" onclick="getConfig()"><br/><br/>
 <input type="button" value="Send Config Label" onclick="writeToSelectedPrinter('~wc')"><br/><br/>
