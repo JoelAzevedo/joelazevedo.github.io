@@ -117,17 +117,20 @@ const flight_number = "FR 8343";
 const slot_number = "02A";
 const slot_interval = "02:00-02:15";
 
+// configs
+const align_text_center = "^FB400,,,C";
+
 const slot_ticket = "^XA" +	// Start format
 					// ^FO x,y, alignment (Field Origin)
 					// ^A font, height, width (Set font for current field)
 					// ^FD (Field Data)
-					"^FO75,60" + "^A0,40" + "^FD" + flight_text + flight_number + "^FS" + // Flight Number
-					"^FO40,190" + "^A0,80" + "^FD" + slot_text + slot_number + "^FS" + // Slot Number
-					"^FO90,280" + "^A0,40" + "^FD" + slot_interval + "^FS" + // Slot Interval
-					"^FO100,440" + "^A0,20" + "^FD" + aux_text_one + "^FS" + // Aux text line 1 
-					"^FO105,465" + "^A0,20" + "^FD" + aux_text_two + "^FS" + // Aux text line 2
+					"^FO0,60" + align_text_center + "^A0,40" + "^FD" + flight_text + flight_number + "^FS" + // Flight Number
+					"^FO0,190" + align_text_center + "^A0,80" + "^FD" + slot_text + slot_number + "^FS" + // Slot Number
+					"^FO0,280" + align_text_center + "^A0,40" + "^FD" + slot_interval + "^FS" + // Slot Interval
+					"^FO0,440" + align_text_center + "^A0,20" + "^FD" + aux_text_one + "^FS" + // Aux text line 1 
+					"^FO0,465" + align_text_center + "^A0,20" + "^FD" + aux_text_two + "^FS" + // Aux text line 2
 					via_guide_logo + // Via Guide Logo
-					"^FO140,680" + "^A0,16" + "^FD" + footer_text +"^FS" +	// Powered by Moviik
+					"^FO0,680" + align_text_center + "^A0,16" + "^FD" + footer_text +"^FS" +	// Powered by Moviik
 					"^XZ" // End format
 
 // JSZPL
