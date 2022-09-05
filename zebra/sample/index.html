@@ -128,6 +128,7 @@ label.padding = new Spacing(10, 40);
 const flightNumber = new Text();
 label.content.push(flightNumber);
 flightNumber.top = 60;
+flightNumber.height = 0;
 flightNumber.width = 40;
 flightNumber.fontFamily = new FontFamily(FontFamilyName.D);
 flightNumber.horizontalAlignment  = new Alignment(AlignmentValue.Center);
@@ -156,7 +157,6 @@ Selected Printer: <select id="selected_device" onchange=onDeviceSelected(this);>
 <!-- Images -->
 <input type="button" value="Send BMP" onclick="sendImage('Zebra_logobox.bmp');"><br/><br/>
 <input type="button" value="Send JPG" onclick="sendImage('ZebraGray.jpg');"><br/><br/>
-<input type="button" value="Send JPG Zalves Tattoo" onclick="sendImage('zalves_tattoo.jpg');"><br/><br/>
 
 <!-- Files -->
 <input type="button" value="Send File" onclick="sendFile('wc.zpl');"><br/><br/>
