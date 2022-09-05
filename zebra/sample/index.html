@@ -1,5 +1,6 @@
 <html>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <head>
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
 <script type="text/javascript" src="../jszpl.bundle.js"></script>
@@ -78,7 +79,6 @@ function getDeviceCallback(deviceList)
 {
 	alert("Devices: \n" + JSON.stringify(deviceList, null, 4))
 }
-
 function sendImage(imageUrl)
 {
 	url = window.location.href.substring(0, window.location.href.lastIndexOf("/"));
@@ -103,9 +103,6 @@ function onDeviceSelected(selected)
 window.onload = setup;
 
 // ZPL tests
-const zpl_label = '^XA^FO200,200^A0N36,36^FDTest Label^FS^XZ';
-const moviik_letters = '^XA^FO200,200^A0N36,36^FDMoviik^FS^XZ';
-const product_label = '^XA^CF0,30^FO300,30^FDHU  Label^FS^CF0,25^FO20,100^FDHU ID:         112345678000001107^FS^BY2.2,3,70^FO20,130^BCN,,N^FD112345678000001107^FS^FO20,230^FD60-Volt Cordless Electric Hedge Trimmer^FS^FO20,260^FD13^FS^FO650,200^BQN,2,5^FDQA,^FS^XZ'
 const via_guide_logo = "^FO50,620^GFA,2470,2470,38,,::::::::::::::hW07LFC,hV017LFC,hV01BLFC,hV01CLF8,hV01E7KF8,hV01F3KF8,hV01F9KF,hV01FCKF4,hV01FE7JF4,Q0F8003E1FI0FEI01IF002I010181IFC007IFJ01FF3IFE4,Q0F8007E1FI0FFI07IFE07I038181JF80JF8I01FC3IFEC,Q0FC007C1F001FFI0EI0E07I0381818003C0EM01F9BIFEC,Q07C00FC1F001FF800CI0707I0381818I0C0EM01F3BIFCC,Q07E00F81F003FF801CI0307I0381818I0E0EM01CF8J0C,Q03E01F81F007EFC01CK07I0381818I060EN01F8I01C,Q01F01F01F007C7C01CK07I0381818I060EN07F8I01C,Q01F83E01F00FC7E01CK07I0381818I060JFK0FF80401C,R0F87E01F00F83E01CK07I0381818I060JFJ01FF806018,R0FC7C01F01F83F01C07FF07I0381818I060EM07FF807038,R07CFC01F01JF01C03FF07I0381818I060EM0IF807838,R07EF801F03JF81CI0307I0381818I060EL03IF807C3,R03FF801F03JFC1CI0307I0381818I0E0EL07IF807E7,R03FF001F07JFC0CI0307I0381818I0C0EL0JF007F7,R01FF001F07C007E0CI0707I0381818001C0EK01IFE007FF,R01FE001F0FC007E0JFE03JF0181JF80JF801IFC007FE,S0FE001F0F8003F03IFC01IFE0183JF00JF801IFI07FE,hT01FFEI07FE,hT01FFCI07FE,hT01FFJ07FC,hT01FEJ03FC,hT01FCJ01FC,hT01FL078,hT01EL038,hT018L018,,:::::::::::::::^FS"; // Via Guide Logo
 const slot_ticket = "^XA" +	// Initialize
 					"^FO75,60^A0,40" + "^FDFlight FR 8343^FS" + // Flight Number
@@ -128,8 +125,8 @@ label.padding = new Spacing(10);
 const flightNumber = new Text();
 label.content.push(flightNumber);
 flightNumber.height = 60;
-flightNumber.fontFamily = new FontFamily(FontFamilyName.D);
-flightNumber.verticalAlignment = new Alignment(AlignmentValue.Center);
+flightNumber.fontFamily = new FontFamily(FontFamilyName.E);
+flightNumber.horizontalAlignment  = new Alignment(AlignmentValue.Center);
 flightNumber.text = 'Flight FR 8343';
 
 const zplLabelTest = label.generateZPL();										
@@ -139,15 +136,11 @@ const zplLabelTest = label.generateZPL();
 <body>
 
 <span style="padding-right:50px; font-size:200%">Zebra Browser Print Test Page</span><br/>
-<span style="font-size:75%">This page must be loaded from a web server to function properly.</span><br><br>
 Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
 <input type="button" value="Get Application Configuration" onclick="getConfig()"><br/><br/>
 <input type="button" value="Send Config Label" onclick="writeToSelectedPrinter('~wc')"><br/><br/>
 
 <!-- ZPL Tests -->
-<input type="button" value="Print ZPL Label" onclick="writeToSelectedPrinter(zpl_label)"><br/><br/>
-<input type="button" value="Print Moviik Letters" onclick="writeToSelectedPrinter(moviik_letters)"><br/><br/>
-<input type="button" value="Print Product Label" onclick="writeToSelectedPrinter(product_label)"><br/><br/>
 <input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
 <input type="button" value="Print JSZPL Test" onclick="writeToSelectedPrinter(zplLabelTest)"><br/><br/>
 
@@ -161,8 +154,6 @@ Selected Device: <select id="selected_device" onchange=onDeviceSelected(this);><
 <input type="button" value="Send BMP" onclick="sendImage('Zebra_logobox.bmp');"><br/><br/>
 <input type="button" value="Send JPG" onclick="sendImage('ZebraGray.jpg');"><br/><br/>
 <input type="button" value="Send JPG Zalves Tattoo" onclick="sendImage('zalves_tattoo.jpg');"><br/><br/>
-<input type="button" value="Send Moviik Logo" onclick="sendImage('moviik_logo.svg');"><br/><br/>
-
 
 <!-- Files -->
 <input type="button" value="Send File" onclick="sendFile('wc.zpl');"><br/><br/>
