@@ -2,22 +2,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <head>
-<style>
-	* {
-		text-align: center;
-		font-family: sans-serif;
-	}
-	.button {
-		background-color: #04AA6D;
-		border: none;
-		color: white;
-		padding: 16px 32px;
-		text-decoration: none;
-		margin: 4px 2px;
-		font-size: 16px;
-		cursor: pointer;
-	}
-</style>
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
 
 <script type="text/javascript">
@@ -68,7 +52,6 @@ function getConfig(){
 }
 function writeToSelectedPrinter(dataToWrite)
 {
-	console.log(dataToWrite);
 	selected_device.send(dataToWrite, undefined, errorCallback);
 }
 var readCallback = function(readData) {
@@ -119,7 +102,7 @@ function onDeviceSelected(selected)
 window.onload = setup;
 
 // ZPL tests
-const via_guide_logo = "^FO50,620^GFA,2470,2470,38,,::::::::::::::hW07LFC,hV017LFC,hV01BLFC,hV01CLF8,hV01E7KF8,hV01F3KF8,hV01F9KF,hV01FCKF4,hV01FE7JF4,Q0F8003E1FI0FEI01IF002I010181IFC007IFJ01FF3IFE4,Q0F8007E1FI0FFI07IFE07I038181JF80JF8I01FC3IFEC,Q0FC007C1F001FFI0EI0E07I0381818003C0EM01F9BIFEC,Q07C00FC1F001FF800CI0707I0381818I0C0EM01F3BIFCC,Q07E00F81F003FF801CI0307I0381818I0E0EM01CF8J0C,Q03E01F81F007EFC01CK07I0381818I060EN01F8I01C,Q01F01F01F007C7C01CK07I0381818I060EN07F8I01C,Q01F83E01F00FC7E01CK07I0381818I060JFK0FF80401C,R0F87E01F00F83E01CK07I0381818I060JFJ01FF806018,R0FC7C01F01F83F01C07FF07I0381818I060EM07FF807038,R07CFC01F01JF01C03FF07I0381818I060EM0IF807838,R07EF801F03JF81CI0307I0381818I060EL03IF807C3,R03FF801F03JFC1CI0307I0381818I0E0EL07IF807E7,R03FF001F07JFC0CI0307I0381818I0C0EL0JF007F7,R01FF001F07C007E0CI0707I0381818001C0EK01IFE007FF,R01FE001F0FC007E0JFE03JF0181JF80JF801IFC007FE,S0FE001F0F8003F03IFC01IFE0183JF00JF801IFI07FE,hT01FFEI07FE,hT01FFCI07FE,hT01FFJ07FC,hT01FEJ03FC,hT01FCJ01FC,hT01FL078,hT01EL038,hT018L018,,:::::::::::::::^FS";
+const via_guide_logo = "^FO50,620^GFA,2470,2470,38,,::::::::::::::hW07LFC,hV017LFC,hV01BLFC,hV01CLF8,hV01E7KF8,hV01F3KF8,hV01F9KF,hV01FCKF4,hV01FE7JF4,Q0F8003E1FI0FEI01IF002I010181IFC007IFJ01FF3IFE4,Q0F8007E1FI0FFI07IFE07I038181JF80JF8I01FC3IFEC,Q0FC007C1F001FFI0EI0E07I0381818003C0EM01F9BIFEC,Q07C00FC1F001FF800CI0707I0381818I0C0EM01F3BIFCC,Q07E00F81F003FF801CI0307I0381818I0E0EM01CF8J0C,Q03E01F81F007EFC01CK07I0381818I060EN01F8I01C,Q01F01F01F007C7C01CK07I0381818I060EN07F8I01C,Q01F83E01F00FC7E01CK07I0381818I060JFK0FF80401C,R0F87E01F00F83E01CK07I0381818I060JFJ01FF806018,R0FC7C01F01F83F01C07FF07I0381818I060EM07FF807038,R07CFC01F01JF01C03FF07I0381818I060EM0IF807838,R07EF801F03JF81CI0307I0381818I060EL03IF807C3,R03FF801F03JFC1CI0307I0381818I0E0EL07IF807E7,R03FF001F07JFC0CI0307I0381818I0C0EL0JF007F7,R01FF001F07C007E0CI0707I0381818001C0EK01IFE007FF,R01FE001F0FC007E0JFE03JF0181JF80JF801IFC007FE,S0FE001F0F8003F03IFC01IFE0183JF00JF801IFI07FE,hT01FFEI07FE,hT01FFCI07FE,hT01FFJ07FC,hT01FEJ03FC,hT01FCJ01FC,hT01FL078,hT01EL038,hT018L018,,:::::::::::::::^FS"; // Via Guide Logo
 
 // Texts
 const flight_text = "Flight ";
@@ -138,26 +121,24 @@ const align_text_left = "^FB400,,,L";
 const align_text_center = "^FB400,,,C";
 const align_text_right = "^FB400,,,R";
 
-// ZPL used commands explanation
-// ^FO x,y, alignment (Field Origin)
-// ^A font, height, width (Set font for current field)
-// ^FD (Field Data)
 const slot_ticket = "^XA" +	// Start format
-										"^FO0,60" + align_text_center + "^A0,40" + "^FD" + flight_text + flight_number + "^FS" +
-										"^FO0,190" + align_text_center + "^A0,80" + "^FD" + slot_text + slot_number + "^FS" +
-										"^FO0,280" + align_text_center + "^A0,40" + "^FD" + slot_interval + "^FS" +
-										"^FO0,440" + align_text_center + "^A0,20" + "^FD" + aux_text_one + "^FS" + 
-										"^FO0,465" + align_text_center + "^A0,20" + "^FD" + aux_text_two + "^FS" + 
-										via_guide_logo +
-										"^FO0,60" + align_text_center + "^A0,18" + "^FD" + footer_text +"^FS" +
-										"^XZ" // End format
-
+					// ^FO x,y, alignment (Field Origin)
+					// ^A font, height, width (Set font for current field)
+					// ^FD (Field Data)
+					"^FO0,60" + align_text_center + "^A0,40" + "^FD" + flight_text + flight_number + "^FS" + // Flight Number
+					"^FO0,190" + align_text_center + "^A0,80" + "^FD" + slot_text + slot_number + "^FS" + // Slot Number
+					"^FO0,280" + align_text_center + "^A0,40" + "^FD" + slot_interval + "^FS" + // Slot Interval
+					"^FO0,440" + align_text_center + "^A0,20" + "^FD" + aux_text_one + "^FS" + // Aux text line 1 
+					"^FO0,465" + align_text_center + "^A0,20" + "^FD" + aux_text_two + "^FS" + // Aux text line 2
+					via_guide_logo + // Via Guide Logo
+					"^FO0,680" + align_text_center + "^A0,16" + "^FD" + footer_text +"^FS" +	// Powered by Moviik
+					"^XZ" // End format
+								
 </script>
 </head>
 <body>
 
 Selected Printer: <select id="selected_device" onchange=onDeviceSelected(this);></select> <!--  <input type="button" value="Change" onclick="changeDevice();">--> <br/><br/> 
-<input type="button" class="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
-
+<input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
 </body>
 </html>
