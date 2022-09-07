@@ -9,16 +9,12 @@ var selected_device;
 var devices = [];
 function setup()
 {
-	//Get the default device from the application as a first step. Discovery takes longer to complete.
 	BrowserPrint.getDefaultDevice("printer", function(device)
 			{
-		
-				//Add device to list of devices and to html select element
 				selected_device = device;
 				devices.push(device);
 			}, function(error){
-				// alert(error);
-				console.log(error);
+				alert(error);
 			})
 }
 function getConfig(){
