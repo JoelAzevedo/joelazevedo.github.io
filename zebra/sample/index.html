@@ -5,7 +5,16 @@
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
 <script type="text/javascript">
 var selected_device;
-
+function setup()
+{
+	BrowserPrint.getDefaultDevice("printer", function(device)
+			{
+				selected_device = device;
+				alert(selected_device);
+			}, function(error){
+				alert(error);
+			})
+}
 function writeToSelectedPrinter(dataToWrite)
 {
 	console.log(dataToWrite);
