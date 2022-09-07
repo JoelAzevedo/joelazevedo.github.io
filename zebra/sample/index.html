@@ -16,7 +16,7 @@ function setup()
 }
 function writeToSelectedPrinter(dataToWrite)
 {
-	alert(JSON.stringify(selected_device));
+	alert(JSON.stringify(selected_device)); 
 	selected_device.send(dataToWrite, undefined, errorCallback);
 }
 var errorCallback = function(errorMessage){
