@@ -3,7 +3,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <head>
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
-
 <script type="text/javascript">
 var selected_device;
 var devices = [];
@@ -38,26 +37,21 @@ var errorCallback = function(errorMessage){
 }
 window.onload = setup;
 
-// ZPL tests
 const via_guide_logo = "^FO50,620^GFA,2470,2470,38,,::::::::::::::hW07LFC,hV017LFC,hV01BLFC,hV01CLF8,hV01E7KF8,hV01F3KF8,hV01F9KF,hV01FCKF4,hV01FE7JF4,Q0F8003E1FI0FEI01IF002I010181IFC007IFJ01FF3IFE4,Q0F8007E1FI0FFI07IFE07I038181JF80JF8I01FC3IFEC,Q0FC007C1F001FFI0EI0E07I0381818003C0EM01F9BIFEC,Q07C00FC1F001FF800CI0707I0381818I0C0EM01F3BIFCC,Q07E00F81F003FF801CI0307I0381818I0E0EM01CF8J0C,Q03E01F81F007EFC01CK07I0381818I060EN01F8I01C,Q01F01F01F007C7C01CK07I0381818I060EN07F8I01C,Q01F83E01F00FC7E01CK07I0381818I060JFK0FF80401C,R0F87E01F00F83E01CK07I0381818I060JFJ01FF806018,R0FC7C01F01F83F01C07FF07I0381818I060EM07FF807038,R07CFC01F01JF01C03FF07I0381818I060EM0IF807838,R07EF801F03JF81CI0307I0381818I060EL03IF807C3,R03FF801F03JFC1CI0307I0381818I0E0EL07IF807E7,R03FF001F07JFC0CI0307I0381818I0C0EL0JF007F7,R01FF001F07C007E0CI0707I0381818001C0EK01IFE007FF,R01FE001F0FC007E0JFE03JF0181JF80JF801IFC007FE,S0FE001F0F8003F03IFC01IFE0183JF00JF801IFI07FE,hT01FFEI07FE,hT01FFCI07FE,hT01FFJ07FC,hT01FEJ03FC,hT01FCJ01FC,hT01FL078,hT01EL038,hT018L018,,:::::::::::::::^FS"; // Via Guide Logo
-
 // Texts
 const flight_text = "Flight ";
 const slot_text = "SLOT ";
 const aux_text_one = "Proceed to the queue at";
 const aux_text_two = "the corresponding hour";
 const footer_text = "Powered by Moviik";
-
 // Variables (hardcoded with text for now just for tests)
 const flight_number = "FR 8343";
 const slot_number = "02A";
 const slot_interval = "02:00-02:15";
-
 // configs
 const align_text_left = "^FB400,,,L";
 const align_text_center = "^FB400,,,C";
 const align_text_right = "^FB400,,,R";
-
 const slot_ticket = "^XA" +	// Start format
 					// ^FO x,y, alignment (Field Origin)
 					// ^A font, height, width (Set font for current field)
@@ -74,8 +68,6 @@ const slot_ticket = "^XA" +	// Start format
 </script>
 </head>
 <body>
-
-
 <input type="button" value="Print Slot Ticket" onclick="writeToSelectedPrinter(slot_ticket)"><br/><br/>
 </body>
 </html>
