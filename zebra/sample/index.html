@@ -10,14 +10,13 @@ function setup()
 	BrowserPrint.getDefaultDevice("printer", function(device)
 			{
 				selected_device = device;
-				alert(JSON.stringify(selected_device));
 			}, function(error){
 				alert(error);
 			})
 }
 function writeToSelectedPrinter(dataToWrite)
 {
-	console.log(dataToWrite);
+	alert(JSON.stringify(selected_device));
 	selected_device.send(dataToWrite, undefined, errorCallback);
 }
 var errorCallback = function(errorMessage){
