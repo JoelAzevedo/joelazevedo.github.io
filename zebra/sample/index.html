@@ -5,13 +5,11 @@
 <script type="text/javascript" src="../BrowserPrint-3.0.216.min.js"></script>
 <script type="text/javascript">
 var selected_device;
-var devices = [];
 function setup()
 {
 	BrowserPrint.getDefaultDevice("printer", function(device)
 			{
 				selected_device = device;
-				devices.push(device);
 			}, function(error){
 				alert(error);
 			})
@@ -20,17 +18,6 @@ function writeToSelectedPrinter(dataToWrite)
 {
 	console.log(dataToWrite);
 	selected_device.send(dataToWrite, undefined, errorCallback);
-}
-var readCallback = function(readData) {
-	if(readData === undefined || readData === null || readData === "")
-	{
-		alert("No Response from Device");
-	}
-	else
-	{
-		alert(readData);
-	}
-	
 }
 var errorCallback = function(errorMessage){
 	alert("Error: " + errorMessage);	
