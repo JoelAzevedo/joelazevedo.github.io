@@ -16,11 +16,6 @@ function setup()
 				//Add device to list of devices and to html select element
 				selected_device = device;
 				devices.push(device);
-				var html_select = document.getElementById("selected_device");
-				var option = document.createElement("option");
-				option.text = device.name;
-				html_select.add(option);
-			
 			}, function(error){
 				// alert(error);
 				console.log(error);
