@@ -17,13 +17,6 @@ function setup()
 				alert(error);
 			})
 }
-function getConfig(){
-	BrowserPrint.getApplicationConfiguration(function(config){
-		alert(JSON.stringify(config))
-	}, function(error){
-		alert(JSON.stringify(new BrowserPrint.ApplicationConfiguration()));
-	})
-}
 function writeToSelectedPrinter(dataToWrite)
 {
 	console.log(dataToWrite);
@@ -42,36 +35,6 @@ var readCallback = function(readData) {
 }
 var errorCallback = function(errorMessage){
 	alert("Error: " + errorMessage);	
-}
-function readFromSelectedPrinter()
-{
-	selected_device.read(readCallback, errorCallback);
-}
-function getDeviceCallback(deviceList)
-{
-	alert("Devices: \n" + JSON.stringify(deviceList, null, 4))
-}
-function sendImage(imageUrl)
-{
-	url = window.location.href.substring(0, window.location.href.lastIndexOf("/"));
-	url = url + "/" + imageUrl;
-	selected_device.convertAndSendFile(url, undefined, errorCallback)
-}
-function sendFile(fileUrl){
-    url = window.location.href.substring(0, window.location.href.lastIndexOf("/"));
-    url = url + "/" + fileUrl;
-    selected_device.sendFile(url, undefined, errorCallback)
-}
-function onDeviceSelected(selected)
-{
-	console.log(selected);
-	for(var i = 0; i < devices.length; ++i){
-		if(selected.value == devices[i].uid)
-		{
-			selected_device = devices[i];
-			return;
-		}
-	}
 }
 window.onload = setup;
 
