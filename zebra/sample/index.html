@@ -10,7 +10,7 @@ function setup()
 	BrowserPrint.getDefaultDevice("printer", function(device)
 			{
 				selected_device = device;
-				alert(selected_device);
+				alert(selected_device[0]);
 			}, function(error){
 				alert(error);
 			})
